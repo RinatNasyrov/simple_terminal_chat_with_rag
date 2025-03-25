@@ -1,9 +1,10 @@
+import textwrap
+
 from sentence_transformers import SentenceTransformer
 import openai
 from settings import *
 from utils import *
 from string import Template
-from pprint import pprint
 
 client = openai.OpenAI(
     base_url=URL,
@@ -51,4 +52,4 @@ while True:
     answer = response.choices[0].message.content
     messanges.append({"role": "assistant", "content": answer})
 
-    pprint(f'Ответ>{answer}', width=250)
+    print(textwrap.fill(f'Ответ>{answer}', width=ANSWER_WIDTH))
